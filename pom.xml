@@ -12,18 +12,6 @@
   <build>
       <plugins>
           <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-war-plugin</artifactId>
-              <configuration>
-                  <webResources>
-                      <resource>
-                          <directory>${basedir}/src/main/java</directory>
-                          <targetPath>WEB-INF/classes</targetPath>
-                      </resource>
-                  </webResources>
-              </configuration>
-          </plugin>
-          <plugin>
               <artifactId>maven-compiler-plugin</artifactId>
               <configuration>
                   <source>1.6</source>
@@ -33,11 +21,6 @@
       </plugins>
   </build>
   <dependencies>
-    <dependency>
-        <groupId>commons-dbutils</groupId>
-        <artifactId>commons-dbutils</artifactId>
-        <version>1.5</version>
-    </dependency>
     <dependency>
         <groupId>org.apache.tomcat</groupId>
         <artifactId>tomcat-juli</artifactId>
