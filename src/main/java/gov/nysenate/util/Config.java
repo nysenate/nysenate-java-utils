@@ -3,6 +3,9 @@ package gov.nysenate.util;
 import gov.nysenate.util.listener.NYSenateConfigurationListener;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Observer;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,13 +25,11 @@ import org.apache.log4j.Logger;
  * functionality in a testing environment.
  *
  * In the event of property file modifications while the context is deployed
- * the SageConfigurationListener instance supplied will intercept file change events
+ * the NYSenateConfigurationListener instance supplied will intercept file change events
  * and notify the observers. To observe Config for changes simply call notifyOnChange()
- * which delegates the Observer to SageConfigurationListener. File change modifications
+ * which delegates the Observer to NYSenateConfigurationListener. File change modifications
  * are not checked continuously but rather any time the Config object is read from.
  *
- * @see gov.nysenate.sage.factory.ApplicationFactory
- * @see gov.nysenate.sage.listener.SageConfigurationListener
  */
 
 public class Config
@@ -75,10 +76,50 @@ public class Config
         return value;
     }
 
+    /**
+     * Same behaviour as getValue(key) except a default value can be returned if the key
+     * cannot be resolved.
+     *
+     * @param key           - Property key to look up the value for.
+     * @param defaultValue  - Default value to substitute
+     * @return String - Value of property or defaultValue if not found
+     */
     public String getValue(String key, String defaultValue)
     {
         String value = this.getValue(key);
         return (!value.isEmpty()) ? value : defaultValue;
+    }
+
+    /**
+     * Reads property file and returns a list of values for a given key.
+     *
+     * @param key - Property key to look up the value for.
+     * @return List<String>
+     */
+    public List<String> getList(String key)
+    {
+        return getList(key, new ArrayList<String>());
+    }
+
+    /**
+     * Reads property file and returns a list of values for a given key
+     * or the default value list if empty.
+     * @param key           - Property key to look up the value for.
+     * @param defaultValues - Default array to return if list is empty.
+     * @return  List<String>
+     */
+    public List<String> getList(String key, List<String> defaultValues)
+    {
+        List<String> values = Arrays.asList(this.config.getStringArray(key));
+        return (!values.isEmpty()) ? values : defaultValues;
+    }
+
+    /**
+     * Checks to see if the config file has been updated recently and propagates updates.
+     */
+    public void refresh()
+    {
+        this.config.reload();
     }
 
     /**
@@ -114,10 +155,4 @@ public class Config
         }
         return value;
     }
-
-    @Deprecated
-    public static void notify(Observer o) {}
-
-    @Deprecated
-    public static String read(String key) {return "";}
 }
