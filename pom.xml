@@ -7,7 +7,7 @@
   <groupId>gov.nysenate</groupId>
   <artifactId>nysenate-java-utils</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <name>nysenate-java-utils</name>
   <build>
       <plugins>
