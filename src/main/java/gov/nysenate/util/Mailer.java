@@ -53,7 +53,7 @@ public class Mailer
         SMTP_TLS_ENABLE = config.getValue(prefix+".tls.enable");
         SMTP_SSL_ENABLE = config.getValue(prefix+".ssl.enable");
         SMTP_CONTEXT = config.getValue(prefix+".context");
-        logger.info("Setting up mailer for "+SMTP_ACCOUNT_USER+":"+SMTP_ACCOUNT_PASS+"@"+SMTP_HOST_NAME+":"+SMTP_PORT);
+        logger.info("Setting up mailer for "+SMTP_ACCOUNT_USER+"@"+SMTP_HOST_NAME+":"+SMTP_PORT);
     }
 
     public String getContext() {
