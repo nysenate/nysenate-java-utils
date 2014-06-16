@@ -10,10 +10,16 @@ Packaging
 To package and install as a maven dependency:
 
 ```
+mvn compile
+
+```
+
+replace X.X.X with version number
+```
 mvn clean package
 mvn install:install-file -Dfile=target/nysenate-java-utils-X.X.X.jar -DpomFile=pom.xml
    -- or --
-mvn install:install-file -Dfile=target/nysenate-java-utils-1.0.1.jar -DgroupId=gov.nysenate -DartifactId=nysenate-java-utils -Dversion=1.0.1 -Dpackaging=jar -DgeneratePom=true
+mvn install:install-file -Dfile=target/nysenate-java-utils-X.X.X.jar -DgroupId=gov.nysenate -DartifactId=nysenate-java-utils -Dversion=X.X.X -Dpackaging=jar -DgeneratePom=true
 
 ```
 
