@@ -1,7 +1,5 @@
 package gov.nysenate.util;
 
-import gov.nysenate.util.listener.NYSenateConfigurationListener;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,7 +11,11 @@ import java.util.regex.Pattern;
 import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.configuration.reloading.FileChangedReloadingStrategy;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import gov.nysenate.util.listener.NYSenateConfigurationListener;
+
 
 /**
  * The Config class provides access to the property file configuration values.
@@ -34,7 +36,7 @@ import org.apache.log4j.Logger;
 
 public class Config
 {
-    private final Logger logger = Logger.getLogger(Config.class);
+    private static final Logger logger = LoggerFactory.getLogger(Config.class);
 
     /** Pattern to replace {{variables}} used in the property file. */
     private static final Pattern variablePattern = Pattern.compile("\\{\\{(.*?)\\}\\}");

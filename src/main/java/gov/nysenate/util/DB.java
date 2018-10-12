@@ -2,9 +2,11 @@ package gov.nysenate.util;
 
 import java.util.Observable;
 
-import org.apache.log4j.Logger;
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.apache.tomcat.jdbc.pool.PoolProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Database class to configure and wrap a DataSource instance for performing queries. Uses
@@ -21,7 +23,7 @@ import org.apache.tomcat.jdbc.pool.PoolProperties;
  */
 public class DB
 {
-    Logger logger = Logger.getLogger(DB.class);
+    private static final Logger logger = LoggerFactory.getLogger(DB.class);
 
     private DataSource ds;
     private final Config config;

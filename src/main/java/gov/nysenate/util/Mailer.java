@@ -10,7 +10,9 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * Can send mail.
@@ -26,7 +28,7 @@ import org.apache.log4j.Logger;
  */
 public class Mailer
 {
-    private final Logger logger = Logger.getLogger(Mailer.class);
+    private static final Logger logger = LoggerFactory.getLogger(Mailer.class);
     private final Config config;
     private final String SMTP_HOST_NAME;
     private final String SMTP_DEBUG;

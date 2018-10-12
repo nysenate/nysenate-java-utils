@@ -6,16 +6,18 @@ import org.apache.commons.configuration.event.ConfigurationErrorEvent;
 import org.apache.commons.configuration.event.ConfigurationErrorListener;
 import org.apache.commons.configuration.event.ConfigurationEvent;
 import org.apache.commons.configuration.event.ConfigurationListener;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 /**
  * NYSenateConfigurationListener listens to any changes to property files that have been loaded with
  * the {@link org.apache.commons.configuration.PropertiesConfiguration} class.
  */
 public class NYSenateConfigurationListener extends Observable
-                                       implements ConfigurationListener, ConfigurationErrorListener
+             implements ConfigurationListener, ConfigurationErrorListener
 {
-    public Logger logger = Logger.getLogger(this.getClass());
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
     public NYSenateConfigurationListener() {}
 
     @Override

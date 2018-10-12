@@ -7,7 +7,10 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 /**
  * NYSenateContextListener is used to call initialization methods when the context is (re)deployed and
  * perform cleanup when the context is being shut down. Used to manage Application singleton entities
@@ -29,9 +32,9 @@ import org.apache.log4j.Logger;
  *
  */
 @WebListener()
-public class NYSenateContextListener implements ServletContextListener {
-
-    public Logger logger = Logger.getLogger(this.getClass());
+public class NYSenateContextListener implements ServletContextListener
+{
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     public String appClassName = "";
     public Class<?> appClass = null;
@@ -61,19 +64,19 @@ public class NYSenateContextListener implements ServletContextListener {
             sce.getServletContext().setAttribute("init", buildStatus);
         }
         catch (NoSuchMethodException e) {
-            logger.fatal("Factory class: "+appClassName+" must implement static boolean boostrap() and boolean shutdown() methods.",e);
+            logger.error("Factory class: "+appClassName+" must implement static boolean boostrap() and boolean shutdown() methods.", e);
         }
         catch (ClassNotFoundException e) {
-            logger.fatal("Factory class: "+appClassName+" not found.",e);
+            logger.error("Factory class: "+appClassName+" not found.", e);
         }
         catch (IllegalAccessException e) {
-            logger.fatal("Unable to call "+appClassName+"."+bootstrap.getName(), e);
+            logger.error("Unable to call "+appClassName+"."+bootstrap.getName(), e);
         }
         catch (IllegalArgumentException e) {
-            logger.fatal("Unable to call "+appClassName+"."+bootstrap.getName(), e);
+            logger.error("Unable to call "+appClassName+"."+bootstrap.getName(), e);
         }
         catch (InvocationTargetException e) {
-            logger.fatal("Unable to call "+appClassName+"."+bootstrap.getName(), e);
+            logger.error("Unable to call "+appClassName+"."+bootstrap.getName(), e);
         }
     }
 
@@ -90,13 +93,13 @@ public class NYSenateContextListener implements ServletContextListener {
                 shutdown.invoke(null);
             }
             catch (IllegalAccessException e) {
-                logger.fatal("Unable to call "+appClassName+"."+shutdown.getName(), e);
+                logger.error("Unable to call "+appClassName+"."+shutdown.getName(), e);
             }
             catch (IllegalArgumentException e) {
-                logger.fatal("Unable to call "+appClassName+"."+shutdown.getName(), e);
+                logger.error("Unable to call "+appClassName+"."+shutdown.getName(), e);
             }
             catch (InvocationTargetException e) {
-                logger.fatal("Unable to call "+appClassName+"."+shutdown.getName(), e);
+                logger.error("Unable to call "+appClassName+"."+shutdown.getName(), e);
             }
         }
     }
