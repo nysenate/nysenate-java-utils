@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>gov.nysenate</groupId>
   <artifactId>nysenate-java-utils</artifactId>
-  <version>1.1</version>
+  <version>1.2</version>
   <packaging>jar</packaging>
 
   <build>
@@ -24,7 +24,7 @@
     <javamail.version>1.4.7</javamail.version>
     <junit.version>4.12</junit.version>
     <log4j.version>2.11.1</log4j.version>
-    <tomcat.version>8.5.34</tomcat.version>
+    <tomcat.version>10.1.39</tomcat.version>
   </properties>
 
   <dependencies>
@@ -33,11 +33,27 @@
       <artifactId>commons-configuration</artifactId>
       <version>${commons-configuration.version}</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
     <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>mail</artifactId>
-      <version>${javamail.version}</version>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>jakarta.mail</artifactId>
+      <version>2.0.1</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>6.1.0</version>
+      <scope>provided</scope>
+    </dependency>
+
+<!--    <dependency>-->
+<!--      <groupId>javax.mail</groupId>-->
+<!--      <artifactId>mail</artifactId>-->
+<!--      <version>${javamail.version}</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
