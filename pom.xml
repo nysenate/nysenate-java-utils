@@ -21,10 +21,11 @@
 
   <properties>
     <commons-configuration.version>1.10</commons-configuration.version>
-    <javamail.version>1.4.7</javamail.version>
     <junit.version>4.12</junit.version>
     <log4j.version>2.11.1</log4j.version>
     <tomcat.version>10.1.39</tomcat.version>
+    <jakarta.mail.version>2.0.1</jakarta.mail.version>
+    <jakarta.servlet-api.version>6.1.0</jakarta.servlet-api.version>
   </properties>
 
   <dependencies>
@@ -38,22 +39,17 @@
     <dependency>
       <groupId>com.sun.mail</groupId>
       <artifactId>jakarta.mail</artifactId>
-      <version>2.0.1</version>
+      <version>${jakarta.mail.version}</version>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
-      <version>6.1.0</version>
+      <version>${jakarta.servlet-api.version}</version>
       <scope>provided</scope>
     </dependency>
 
-<!--    <dependency>-->
-<!--      <groupId>javax.mail</groupId>-->
-<!--      <artifactId>mail</artifactId>-->
-<!--      <version>${javamail.version}</version>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
